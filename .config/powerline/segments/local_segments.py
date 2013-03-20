@@ -52,7 +52,7 @@ def branch(status_colors=True):
             return [{
                 'contents': "{} {} {}".format(
                     branch_symbol,
-                    ''.join(status_elements),
+                    ' '.join(status_elements),
                     branch
                 ),
                 'highlight_group': ['branch_dirty' if status else 'branch_clean', 'branch'],
