@@ -42,8 +42,20 @@ def ssh_agent_status():
     """
     key_symbol = '⚷'
     if os.environ.get('SSH_AGENT_PID'):
-        return [{
-            'contents': key_symbol,
-            'highlight_group': ['hostname']
-        }]
+        try:
+            import paramiko
+            agent = paramiko.Agent()
+            keys = agent.get_keys()
+        except:
+            keys = []
+        if len(keys) > 0:
+            return [{
+                'contents': "{} {}".format(key_symbol, len(keys)),
+                'highlight_group': ['hostname']
+            }]
+        else:
+            return [{
+                'contents': key_symbol,
+                'highlight_group': ['hostname']
+            }]
     return None
