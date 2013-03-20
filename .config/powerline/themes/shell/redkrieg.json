@@ -9,9 +9,6 @@
 		},
 		"virtualenv": {
 			"before": "ⓔ  "
-		},
-		"branch": {
-			"before": " "
 		}
 	},
 	"segments": {

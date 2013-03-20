@@ -5,6 +5,18 @@ from __future__ import absolute_import
 import os
 from powerline.lib.vcs import guess
 
+symbols = {
+    'branch': '',
+    'key': '⚷',
+    'plus_minus': '±',
+    'detached': '➦',
+    'check': '✔',
+    'x': '✘',
+    'zap': '⚡',
+    'envelope': '✉',
+    'big_u': 'Ʊ'
+}
+
 def branch(status_colors=True):
     '''Return the current VCS branch.
 
@@ -20,18 +32,31 @@ def branch(status_colors=True):
         branch = repo.branch()
         if status_colors:
             status = repo.status()
+            status_elements = []
             # Keep display nice
-            if status is None:
-                status_string = '   '
-            else:
-                status_string = status
+            if status is not None:
+                if 'D' in status:
+                    status_elements.append(symbols['plus_minus'])
+                if 'I' in status:
+                    status_elements.append(symbols['envelope'])
+                if 'U' in status:
+                    status_elements.append(symbols['big_u'])
                 # Don't color for untracked files, just show U
                 if status.strip() == 'U':
                     status = None
+            if 'no branch' in branch or 'DETACHED HEAD' in branch:
+                branch_symbol = symbols['detached']
+                branch = "DETACHED"
+            else:
+                branch_symbol = symbols['branch']
             return [{
-                'contents': "{} on {}".format(status_string, branch),
+                'contents': "{} {} {}".format(
+                    branch_symbol,
+                    ''.join(status_elements),
+                    branch
+                ),
                 'highlight_group': ['branch_dirty' if status else 'branch_clean', 'branch'],
-                }]
+            }]
         else:
             return branch
     return None
@@ -40,7 +65,7 @@ def ssh_agent_status():
     """
     Shows a key symbol if an ssh-agent process has set SSH_AGENT_PID
     """
-    key_symbol = '⚷'
+    key_symbol = symbols['key']
     if os.environ.get('SSH_AGENT_PID'):
         try:
             import paramiko
