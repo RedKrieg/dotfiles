@@ -1,0 +1,53 @@
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    palette = "#073642:#d30102:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_darkness = 0.89
+    background_type = transparent
+    use_system_font = False
+    split_to_group = True
+    foreground_color = "#00ff00"
+    font = Inconsolata Medium 11
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+  [[threeway]]
+    [[[child0]]]
+      position = 0:24
+      type = Window
+      order = 0
+      parent = ""
+      size = 1920, 1056
+    [[[child1]]]
+      position = 661
+      type = HPaned
+      order = 0
+      parent = child0
+    [[[child2]]]
+      position = 457
+      type = VPaned
+      order = 0
+      parent = child1
+    [[[terminal3]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child2
+    [[[terminal5]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child1
+    [[[terminal4]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child2
+[plugins]
