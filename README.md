@@ -14,3 +14,7 @@ Local
 - Powerline
 
     ~/bin/update_dependencies.sh # installs powerline locally
+
+- Submodules
+
+    git submodule update --init --recursive
