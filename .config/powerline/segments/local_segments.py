@@ -63,10 +63,10 @@ def branch(status_colors=True):
 
 def ssh_agent_status():
     """
-    Shows a key symbol if an ssh-agent process has set SSH_AGENT_PID
+    Shows a key symbol if an ssh-agent process has set SSH_AUTH_SOCK
     """
     key_symbol = symbols['key']
-    if os.environ.get('SSH_AGENT_PID'):
+    if os.environ.get('SSH_AUTH_SOCK'):
         try:
             import paramiko
             agent = paramiko.Agent()
