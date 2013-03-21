@@ -9,7 +9,7 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/redkrieg/.zshrc'
 
-fpath=(~/.zsh/completion $fpath)
+fpath=(~/.zsh/completion/zsh-completions/src $fpath)
 
 autoload -Uz compinit
 compinit
