@@ -21,6 +21,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-export TERM='xterm-256color'
+#export TERM='xterm-256color'
 
 TZ='America/New_York'; export TZ
