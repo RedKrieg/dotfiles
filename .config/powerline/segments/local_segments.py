@@ -17,7 +17,7 @@ symbols = {
     'big_u': 'Ʊ'
 }
 
-def branch(status_colors=True):
+def branch(pl, status_colors=True):
     '''Return the current VCS branch.
 
     :param bool status_colors:
@@ -61,7 +61,7 @@ def branch(status_colors=True):
             return branch
     return None
 
-def ssh_agent_status():
+def ssh_agent_status(pl):
     """
     Shows a key symbol if an ssh-agent process has set SSH_AUTH_SOCK
     """
